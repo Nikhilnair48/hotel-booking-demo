@@ -1,0 +1,56 @@
+.form-container {
+    position: absolute;
+    top: 25%;
+    bottom: auto;
+    left: 15%;
+    right: auto;
+    margin: auto;
+    width: 300px;
+    height: fit-content;
+}
+
+.background {
+    z-index: -5;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size:cover;
+}
+
+.form-background {
+    z-index: -1;
+    position: absolute;
+    background-color: black;
+    opacity: .5;
+    margin-left: -15px;
+    margin-top: -15px;
+    height: 337px;
+    width: 330px;
+    border-radius: 10px;
+}
+
+label {
+    color: #e5e5e5;
+    height: 25px;
+}
+
+.form-group div[class*="sc-"], .form-group input {
+    height: 40px;
+}
+
+.btn.btn-primary {
+    height: 40px;
+}
+
+input {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-stretch: expanded;
+}
+
+form button.btn.btn-primary {
+    display: grid;
+    margin-left: auto;
+    margin-right: auto;
+}

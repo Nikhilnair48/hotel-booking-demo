@@ -1,0 +1,57 @@
+{
+    "hotelList" : [
+        {
+            "hotelID" : "grand_budapest_hotel",
+            "hotelName": "The Grand Budapest Hotel",
+            "hotelOpeningTime": "08:00:00 GMT+0530 (India Standard Time)",
+            "hotelClosingTime": "20:00:00 GMT+0530 (India Standard Time)",
+            "hotelAddress" : {
+                "addessLineOne": "Hilton Budapest",
+                "addessLineTwo": "Hess András tér 1-3",
+                "city": "Budapest",
+                "state": "Central Hungary",
+                "pincode": 1014,
+                "country": "Hungary"
+                },
+                "hotelStarRating": 4,
+                "hotelUserRating": 4.8,
+                "hotelRooms": [
+                    {
+                        "roomID": "grand_budapest_room",
+                        "roomNumber": 1,
+                        "roomBookingStatus": false,
+                        "roomMaxGuests": 2
+                    }
+            ],
+            "hotelTelephone": "+36 1 889 6600",
+            "hotelFacilities": ["Internet Access", "Breakfast included"]
+        },
+        {
+            "hotelID" : "not_so_grand_budapest_hotel",
+            "hotelName": "Not The Grand Budapest Hotel",
+            "hotelOpeningTime": "011:00:00 GMT+0530 (India Standard Time)",
+            "hotelClosingTime": "8:00:00 GMT+0530 (India Standard Time)",
+            "hotelAddress" : {
+                "addessLineOne": "Hilton Budapest",
+                "addessLineTwo": "Hegyalja út 23",
+                "city": "Budapest",
+                "state": "Central Hungary",
+                "pincode": 1016,
+                "country": "Hungary"
+                },
+                "hotelStarRating": 3.5,
+                "hotelUserRating": 4.2,
+                "hotelRooms": [
+                    {
+                        "roomID": "not_so_grand_budapest_room",
+                        "roomNumber": 1,
+                        "roomBookingStatus": false,
+                        "roomMaxGuests": 2
+                    }
+            ],
+            "hotelTelephone": "+36 1 212 9169",
+            "hotelFacilities": ["Room Service"]
+        }
+
+    ]
+}
