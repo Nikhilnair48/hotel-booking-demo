@@ -5,6 +5,7 @@ import { Navbar, Nav } from 'react-bootstrap';
 
 import { history } from '../_helpers';
 import { HomePage } from '../HomePage';
+import { HotelsList } from '../HotelsList';
 
 class App extends React.Component {
     constructor(props) {
@@ -42,6 +43,7 @@ class App extends React.Component {
                         </Navbar.Collapse>
                     </Navbar>
                     <Route exact path="/" component={HomePage} />
+                    <Route exact path="/hotels" component={HotelsList} />
                 </div>
             </Router>
         );
