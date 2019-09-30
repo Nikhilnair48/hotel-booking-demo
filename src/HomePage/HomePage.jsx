@@ -38,7 +38,8 @@ class HomePage extends React.Component {
         const { booking } = this.state;
 
         if (booking.destination && booking.startDate && booking.endDate) {
-            this.props.findHotels(booking);
+            await this.props.findHotels(booking);
+            this.props.history.push("/hotels");
         }
     }
 
