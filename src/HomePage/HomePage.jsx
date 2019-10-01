@@ -32,6 +32,9 @@ class HomePage extends React.Component {
         });
     }
 
+    componentDidMount() {
+    }
+
     async handleSubmit(e) {
         e.preventDefault();
 
@@ -45,6 +48,9 @@ class HomePage extends React.Component {
 
     render() {
         const { booking } = this.state;
+        // REFRESH NAVBAR FOR WHEN USER LOGS IN AND ARE REDIRECTED TO HOME PAGE. 
+        // TO CONSIDER: INSTEAD OF REFRESHING IN EVER render() CYCLE, HOW ABOUT JUST FOR SUCCESSFUL LOGINS?
+        {this.props.refreshNavbar}
         return (
             <div className="container-fluid">
                 <div className={"form-container"}>
