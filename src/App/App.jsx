@@ -1,7 +1,7 @@
 import React from 'react';
 import { Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Navbar, Nav } from 'react-bootstrap';
+import { Navbar, NavDropdown, Nav } from 'react-bootstrap';
 
 import { history } from '../_helpers';
 import { HomePage } from '../HomePage';
@@ -14,11 +14,12 @@ import './App.css';
 class App extends React.Component {
     constructor(props) {
         super(props);
-        this.renderDynamicNav = this.renderDynamicNav(this);
+        this.renderDynamicNav = this.renderDynamicNav.bind(this);
     }
 
     renderDynamicNav() {
         const user = (this.props.authentication && this.props.authentication.sessionActive) ? this.props.authentication.user : null;
+        console.log(user);
         if(user && user.username) {
             return (
                 <Nav className="ml-auto">
@@ -49,14 +50,14 @@ class App extends React.Component {
                         <Navbar.Brand href="/">The Booking Factory</Navbar.Brand>
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                         <Navbar.Collapse>
-                            {this.renderDynamicNav}
+                            {this.renderDynamicNav()}
                         </Navbar.Collapse>
                     </Navbar>
                     <div className="hotel-demo-content">
-                        <Route exact path="/" component={() => <HomePage refreshNavbar={() => this.renderDynamicNav()} />} />
-                        <Route exact path="/hotels" component={HotelsList} />
-                        <Route exact path="/login" component={LoginPage} />
-                        <Route exact path="/register" component={RegisterPage} />
+                        <Route exact path="/" component={HomePage} updateNavbar={this.renderDynamicNav} />
+                        <Route exact path="/hotels" component={HotelsList} updateNavbar={this.renderDynamicNav} />
+                        <Route exact path="/login" component={LoginPage} updateNavbar={this.renderDynamicNav} />
+                        <Route exact path="/register" component={RegisterPage} updateNavbar={this.renderDynamicNav}/>
                     </div>
                 </div>
             </Router>
