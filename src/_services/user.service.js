@@ -1,5 +1,5 @@
 import { docCLient } from '../AWS';
-import { uuidGenerator } from '../_utils';
+import { uuidGenerator, asyncLocalStorage } from '../_utils';
 
 export const userService = {
     login,
@@ -35,9 +35,12 @@ async function login(username, password) {
     return await scanPromise.then(user => user);
 }
 
-function logout() {
+async function logout() {
     // remove user from local storage to log user out
-    localStorage.removeItem('user');
+    await asyncLocalStorage.setItem("user", null);
+
+    return { status: 200, message: "You've been successfully logged out!" };
+
 }
 
 async function getByUsername(username) {

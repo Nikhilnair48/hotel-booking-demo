@@ -17,9 +17,20 @@ export function authentication(state = {}, action) {
         sessionActive: false, 
         user: action.user
       };
-    case userConstants.LOGOUT:
+    case userConstants.LOGOUT_REQUEST:
       return {
-        sessionActive: false
+        sessionActive: true,
+        user: action.user
+      };
+    case userConstants.LOGOUT_SUCCESS:
+      return {
+        sessionActive: false,
+        ...action.response
+      };
+    case userConstants.LOGOUT_FAILURE:
+      return {
+        sessionActive: true,
+        ...action.error
       };
     default:
       return state;

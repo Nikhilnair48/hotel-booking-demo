@@ -52,9 +52,9 @@ function logout(user) {
         // }
     }
     
-    function request(user) { return { type: userConstants.LOGIN_REQUEST, user } }
-    function success(user) { return { type: userConstants.LOGIN_SUCCESS, user } }
-    function failure(error) { return { type: userConstants.LOGIN_FAILURE, error } }
+    function request(user) { return { type: userConstants.LOGOUT_REQUEST, user } }
+    function success(response) { return { type: userConstants.LOGOUT_SUCCESS, response } }
+    function failure(error) { return { type: userConstants.LOGOUT_FAILURE, error } }
 }
 
 function register(user) {

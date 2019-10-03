@@ -10,6 +10,7 @@ import { RegisterPage } from '../RegisterPage/RegisterPage';
 import { LoginPage } from '../LoginPage/LoginPage';
 
 import './App.css';
+import { userActions } from '../_actions';
 
 class App extends React.Component {
     constructor(props) {
@@ -72,7 +73,7 @@ function mapState(state) {
 }
 
 const actionCreators = {
-    
+    logout: userActions.logout
 };
 
 const connectedApp = connect(mapState, actionCreators)(App);
