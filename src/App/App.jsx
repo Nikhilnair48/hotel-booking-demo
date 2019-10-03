@@ -20,7 +20,7 @@ class App extends React.Component {
 
     renderDynamicNav() {
         const user = (this.props.authentication && this.props.authentication.sessionActive) ? this.props.authentication.user : null;
-        console.log(user);
+
         if(user && user.username) {
             return (
                 <Nav className="ml-auto">

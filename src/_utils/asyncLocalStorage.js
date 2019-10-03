@@ -4,9 +4,14 @@ export const asyncLocalStorage = {
             localStorage.setItem(key, value);
         });
     },
-    getItem: function (key) {
+    getItem: async function (key) {
         return Promise.resolve().then(function () {
             return localStorage.getItem(key);
+        });
+    },
+    removeItem: async function(key) {
+        return Promise.resolve().then(function () {
+            return localStorage.removeItem(key);
         });
     }
 };

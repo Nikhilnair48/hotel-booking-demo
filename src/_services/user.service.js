@@ -1,5 +1,5 @@
 import { docCLient } from '../AWS';
-import { uuidGenerator, asyncLocalStorage } from '../_utils';
+import { uuidGenerator } from '../_utils';
 
 export const userService = {
     login,
@@ -21,7 +21,7 @@ async function login(username, password) {
         }
     }
     let scanPromise = new Promise((resolve, reject) => {
-        docCLient.scan(params, function(error, user) {
+        docCLient.scan(params, async function(error, user) {
             if(user.Items && user.Items.length > 0) {
                 resolve( { status: 200, user: user.Items[0]} );
             } else if(user.Items.length == 0 && error == null) {
@@ -36,11 +36,7 @@ async function login(username, password) {
 }
 
 async function logout() {
-    // remove user from local storage to log user out
-    await asyncLocalStorage.setItem("user", null);
-
     return { status: 200, message: "You've been successfully logged out!" };
-
 }
 
 async function getByUsername(username) {
