@@ -18,7 +18,7 @@ class HotelsList extends React.Component {
         }
         
         this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSelection = this.handleSelection.bind(this);
     }
 
     handleChange(e) {
@@ -33,13 +33,13 @@ class HotelsList extends React.Component {
         });
     }
 
-    async handleSubmit(e) {
-        e.preventDefault();
-
-        const { booking } = this.state;
-
-        if (booking.destination && booking.startDate && booking.endDate) {
-            await this.props.findHotels(booking);
+    async handleSelection(event) {
+        await this.props.selectHotel(this.props.user, JSON.parse(event.target.attributes["data-key"].value));
+        
+        if(this.props.booking.success) {
+            this.props.history.push(this.props.booking.success.nextRoute);
+        } else {
+            this.props.history.push(this.props.booking.error.nextRoute);
         }
     }
 
@@ -58,7 +58,7 @@ class HotelsList extends React.Component {
                                     <div className="card-body">
                                         <h5 className="card-title">{hotel.hotelName}</h5>
                                         <p className="card-text">{hotel.hotelFacilities.toString()}</p>
-                                        <a data-key={JSON.stringify(hotel)} key={hotel} onClick={this.selectHotel} className="btn btn-primary">Select</a>
+                                        <a data-key={JSON.stringify(hotel)} key={hotel} onClick={this.handleSelection} className="btn btn-primary">Select</a>
                                     </div>
                                 </div>
                             )
@@ -79,13 +79,14 @@ class HotelsList extends React.Component {
 
 function mapState(state) {
     const { booking } = state;
-    return { booking };
+    const { user } = state.authentication;
+    return { booking, user };
 }
 
 const actionCreators = {
-    findHotels: bookingActions.findHotels
+    selectHotel: bookingActions.selectHotel
 }
 
 const connectedHotelsList = connect(mapState, actionCreators)(HotelsList);
 
-export { connectedHotelsList as HotelsList}
+export { connectedHotelsList as HotelsList }

@@ -1,7 +1,8 @@
 import { docCLient } from '../AWS';
 
 export const bookingService = {
-    findHotels
+    findHotels,
+    selectHotel
 }
 
 async function findHotels(destinationDetails) {
@@ -17,4 +18,9 @@ async function findHotels(destinationDetails) {
     } else {
         return { status: 500, message: "The service is currently down. Please try again later." }
     }
+}
+
+// TO DO: CHECK IF THE HOTELS' AVAILABILITY HAS CHANGED. MAY HAVE TO MAKE A CALL TO DB
+async function selectHotel(user, hotel) {
+    return { status: 200, message: "Successfully selected hotel. " };
 }

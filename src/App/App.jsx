@@ -5,6 +5,7 @@ import { Navbar, NavDropdown, Nav } from 'react-bootstrap';
 
 import { history } from '../_helpers';
 import { HomePage } from '../HomePage';
+import { HotelPage } from '../HotelPage';
 import { HotelsList } from '../HotelsList';
 import { RegisterPage } from '../RegisterPage/RegisterPage';
 import { LoginPage } from '../LoginPage/LoginPage';
@@ -57,6 +58,7 @@ class App extends React.Component {
                     <div className="hotel-demo-content">
                         <Route exact path="/" component={HomePage} updateNavbar={this.renderDynamicNav} />
                         <Route exact path="/hotels" component={HotelsList} updateNavbar={this.renderDynamicNav} />
+                        <Route exact path="/hotel" component={HotelPage} updateNavbar={this.renderDynamicNav} />
                         <Route exact path="/login" component={LoginPage} updateNavbar={this.renderDynamicNav} />
                         <Route exact path="/register" component={RegisterPage} updateNavbar={this.renderDynamicNav}/>
                     </div>
