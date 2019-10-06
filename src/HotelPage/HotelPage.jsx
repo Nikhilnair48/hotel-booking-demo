@@ -12,12 +12,19 @@ class HotelPage extends React.Component {
             booking: {
                 guests: '',
                 endDate: '',
-                destination: ''
+                startDate: ''
             }
         }
         
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    componentWillMount() {
+        this.setState({
+            guests: '2',
+            endDate: new Date().toDateString()
+        });
     }
 
     handleChange(e) {
@@ -46,24 +53,35 @@ class HotelPage extends React.Component {
     render() {
         const { booking } = this.state;
         return (
-            <div className="container-fluid">
-                <div className={"form-container"}>
-                    <div className="form-background"></div>
-                    <form name="form" onSubmit={this.handleSubmit}>
-                        <div className={'form-group'}>
-                            <label>Destination</label>
-                            <input type="text" className="form-control" name="destination" value={booking.destination} onChange={this.handleChange} />
-                        </div>
-                        <div className={'form-group'}>
-                            <label>Start Date</label>
-                            <input type="date" className="form-control" name="startDate" value={booking.startDate} onChange={this.handleChange} />
-                        </div>
-                        <div className={'form-group'}>
-                            <label>End Date</label>
-                            <input type="date" className="form-control" name="endDate" value={booking.endDate} onChange={this.handleChange} />
-                        </div>
-                        <button className="btn btn-primary" name="/booking" onClick={this.handleSubmit}>Search</button>
-                    </form>
+            <div className="page-container">
+                <div className="hotel-image embed-responsive embed-responsive-16by9">
+                    <img className="embed-responsive-item" src="https://a.hwstatic.com/image/upload/f_auto,q_auto,w_1900,h_500,c_fill,g_center,e_sharpen,e_improve,e_vibrance:60/v1/propertyimages/4/4916/59.jpg" />
+                </div>
+                <div className="hotel-details">
+                    <div className="hotel-description">
+                        <p>Rating: </p>
+                    </div>
+                    <div className="booking-details">
+                        <form name="form" onSubmit={this.handleSubmit}>
+                            <div className={'form-group'}>
+                                <label>Start Date</label>
+                                <input type="date" className="form-control" name="startDate" value={booking.startDate} onChange={this.handleChange} />
+                            </div>
+                            <div className={'form-group'}>
+                                <label>End Date</label>
+                                <input type="date" className="form-control" name="endDate" value={booking.endDate} onChange={this.handleChange} />
+                            </div>
+                            <div className={'form-group'}>
+                                <label>Total guests</label>
+                                <select className="form-control" name="totalGuests" value={booking.totalGuests} onChange={this.handleChange}>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                            </div>
+                            <button className="btn btn-primary" name="/booking" onClick={this.handleSubmit}>Search</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         )
@@ -75,7 +93,7 @@ function mapState(state) {
 }
 
 const actionCreators = {
-    findHotels: bookingActions.findHotels
+    completeBooking: bookingActions.completeBooking
 }
 
 const connectedHotelPage = connect(mapState, actionCreators)(HotelPage);
