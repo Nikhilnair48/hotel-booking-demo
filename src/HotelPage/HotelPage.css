@@ -1,3 +1,15 @@
 .hotel-image {
     height: 300px;
 }
+
+.hotel-details.row {
+    margin: 0;
+}
+
+.booking-details {
+    width: 350px;
+}
+
+.hotel-description, .booking-details {
+    display: inline-block;
+}
